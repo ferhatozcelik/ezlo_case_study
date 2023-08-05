@@ -5,4 +5,7 @@
     <string name="progress_image">Progress Image</string>
     <string name="device_name">Device Name</string>
     <string name="device_detail">Device Detail</string>
+    <string name="edit_mode_off">Edit Mode OFF</string>
+    <string name="edit_mode_on">Edit Mode ON</string>
+    <string name="object_not_found">Object Not Found</string>
 </resources>

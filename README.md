@@ -1,10 +1,15 @@
-# Android MVVM Template
-
-#### A simple Template showing the use of modern android architecture component with MVVM Architecture 🏗
+# Ezlo Case Study
 
 ### Project Architecture
 
 This app uses [MVVM (Model View View-Model)] architecture.
+
+### ScreenShot
+
+<img src="screenshot/screenshot_01.png" width="280" height="600">  <img src="screenshot/screenshot_02.png" width="280" height="600">
+
+<img src="screenshot/screenshot_03.gif" width="280" height="600"> 
+
 
 ### MVVM (Model View View-Model)
   MVVM stands for "Model-View-ViewModel" and it is an architectural pattern used in Android app development. Here's a brief explanation of each component:
@@ -58,14 +63,12 @@ In Android development, MVVM is often implemented using frameworks like LiveData
 
   [Room]: <https://developer.android.com/training/data-storage/room/>
 
+
+
 ### Author
-
 👤 Ferhat OZCELIK
-
 Github: @ferhatozcelik
 LinkedIn:https://www.linkedin.com/in/ferhatozcelik/
-Show your support
-Give a ⭐️ if this project helped you!
 
 ### License
 

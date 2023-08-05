@@ -1,9 +1,12 @@
 package com.ferhatozcelik.ezlocasestudy.ui.fragments.detail
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.ferhatozcelik.ezlocasestudy.R
@@ -17,6 +20,7 @@ import com.ferhatozcelik.ezlocasestudy.util.gone
 import com.ferhatozcelik.ezlocasestudy.util.show
 import com.ferhatozcelik.ezlocasestudy.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding::inflate) {
@@ -34,8 +38,8 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
         if (deviceEntity == null) {
             activity?.findNavController(R.id.nav_host_fragment)?.popBackStack()
-            context?.toast("Object Not Found")
-            Log.e(TAG,  "Object Not Found")
+            context?.toast(getString(R.string.object_not_found))
+            Log.e(TAG,  getString(R.string.object_not_found))
         } else {
             Log.d(TAG,  "Object Found: " + deviceEntity.toString())
             binding.apply {
@@ -64,6 +68,8 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             isEdit = false
             edittextNameValue.isEnabled = false
             toolbar.imageButton1.setImageResource(R.drawable.baseline_mode_edit_outline_black_24dp)
+
+            context?.toast(getString(R.string.edit_mode_off))
         } else {
             // Enable edit mode
             toolbar.imageButton1.setImageResource(R.drawable.baseline_save_black_24dp)
@@ -72,6 +78,11 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
             // Request focus on the EditText
             edittextNameValue.requestFocus()
+
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            imm?.showSoftInput(edittextNameValue, InputMethodManager.SHOW_IMPLICIT)
+
+            context?.toast(getString(R.string.edit_mode_on))
         }
     }
 
