@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_item_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="30dp">
+
+        <ImageView
+            android:id="@+id/imageview_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:contentDescription="@string/image_profile_image" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="97dp"
+        android:layout_toEndOf="@+id/cardview_item_image"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Home Number"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
+        android:id="@+id/textView_id_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_name_value"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/cardview_item_image"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        tools:text="00" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="14dp"
+        android:contentDescription="@string/device_detail"
+        android:src="@drawable/baseline_arrow_forward_ios_black_24dp"
+        android:padding="8dp"
+        app:tint="@color/textColor" />
+
+</RelativeLayout>

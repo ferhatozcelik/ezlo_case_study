@@ -3,7 +3,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.activitys.MainActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="60dp">
+
+            <ImageView
+                android:id="@+id/imageview_profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/app_icon"
+                android:contentDescription="@string/image_profile_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textview_profile_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardview_profile_image"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            tools:text="John Wayne" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_item_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_below="@+id/textview_profile_name"
+            app:cardCornerRadius="30dp">
+
+            <ImageView
+                android:id="@+id/imageview_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="12dp"
+                android:contentDescription="@string/image_profile_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/edittext_name_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_profile_name"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/device_name"
+            android:layout_toEndOf="@+id/cardview_item_image"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingLeft="4dp"
+            android:inputType="text"
+            android:autofillHints="name"
+            android:paddingRight="4dp"
+            android:background="@drawable/edittext_background"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            tools:text="Home Number" />
+
+        <TextView
+            android:id="@+id/textView_id_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardview_item_image"
+            android:layout_alignStart="@+id/cardview_item_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_mac_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_id_value"
+            android:layout_alignStart="@+id/cardview_item_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_firmware_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_mac_value"
+            android:layout_alignStart="@+id/cardview_item_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_model_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView_firmware_value"
+            android:layout_alignStart="@+id/cardview_item_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

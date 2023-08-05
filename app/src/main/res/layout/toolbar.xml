@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/app_icon" />
+
+    <ImageButton
+        android:id="@+id/image_button_1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/baseline_clear_all_black_24dp"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/image_button_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:background="@null"
+        android:layout_toStartOf="@+id/image_button_1"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter"
+        android:src="@drawable/baseline_autorenew_black_24dp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/title_spin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/image_button_2"
+        android:layout_toEndOf="@+id/image_view"
+        android:fontFamily="@font/poppins_black_italic"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:text="@string/app_name"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/title_des"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_spin"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_toStartOf="@+id/image_button_2"
+        android:layout_toEndOf="@+id/image_view"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:text="@string/all_devices_of_ezlo"
+        android:textColor="@color/colorSecondary"
+        android:textStyle="bold" />
+
+</RelativeLayout>
