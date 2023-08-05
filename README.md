@@ -10,6 +10,8 @@ This app uses [MVVM (Model View View-Model)] architecture.
 
 <img src="screenshot/screenshot_03.gif" width="280" height="600"> 
 
+### Download
+https://github.com/ferhatozcelik/ezlo_case_study/raw/master/debug/app-debug.apk
 
 ### MVVM (Model View View-Model)
   MVVM stands for "Model-View-ViewModel" and it is an architectural pattern used in Android app development. Here's a brief explanation of each component:
