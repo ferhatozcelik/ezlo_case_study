@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace 'com.ferhatozcelik.androidmvvmtemplate'
+    namespace 'com.ferhatozcelik.ezlocasestudy'
     compileSdk 33
 
     buildFeatures {
@@ -18,7 +18,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.ferhatozcelik.androidmvvmtemplate"
+        applicationId "com.ferhatozcelik.ezlocasestudy"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -80,6 +80,7 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     // Room
+    implementation "androidx.room:room-ktx:2.4.3"
     implementation "androidx.room:room-runtime:2.4.3"
     kapt "androidx.room:room-compiler:2.4.3"
 

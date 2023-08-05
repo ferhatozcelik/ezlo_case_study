@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Android MVVM Template</string>
+    <string name="app_name">Ezlo Devices</string>
+    <string name="all_devices_of_ezlo">all devices of Ezlo</string>
+    <string name="image_profile_image">Image Profile Image</string>
+    <string name="progress_image">Progress Image</string>
+    <string name="device_name">Device Name</string>
+    <string name="device_detail">Device Detail</string>
 </resources>
