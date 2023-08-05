@@ -145,7 +145,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun onContextItemSelected(item: MenuItem): Boolean {
         if (item.title === "Delete") {
             val alertDialog: AlertDialog.Builder = context?.let { AlertDialog.Builder(it) }!!
-            alertDialog.setTitle("Delete")
+            alertDialog.setTitle("Are you sure about deleting?")
             alertDialog.setPositiveButton("Delete") { _, i -> //Delete
                 tempDeleteItem?.id?.let { viewModel.deleteByDevice(it) }
             }
