@@ -3,6 +3,7 @@ package com.ferhatozcelik.ezlocasestudy.data.entity
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.ferhatozcelik.ezlocasestudy.data.model.Device
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

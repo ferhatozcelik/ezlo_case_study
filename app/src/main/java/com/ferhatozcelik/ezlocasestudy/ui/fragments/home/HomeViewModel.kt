@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ferhatozcelik.ezlocasestudy.data.entity.DeviceEntity
 import com.ferhatozcelik.ezlocasestudy.data.model.Resource
 import com.ferhatozcelik.ezlocasestudy.data.model.DeviceResult
 import com.ferhatozcelik.ezlocasestudy.data.repository.DevicesRepository
@@ -17,11 +18,11 @@ class HomeViewModel @Inject constructor(
     private val devicesRepository: DevicesRepository) : ViewModel() {
     private val TAG = HomeViewModel::class.java.simpleName
 
-    val deviceList: MutableLiveData<Resource<Any>> = MutableLiveData()
+    val deviceList: MutableLiveData<Resource<List<DeviceEntity>>> = MutableLiveData()
 
     fun getDeviceList() = viewModelScope.launch {
         Log.d(TAG, "Get API Device List")
-        deviceList.postValue(Resource.Loading)
+        deviceList.postValue(Resource.Loading(emptyList()))
         safeDeviceList()
     }
 

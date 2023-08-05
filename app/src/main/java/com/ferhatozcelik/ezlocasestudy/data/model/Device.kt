@@ -1,6 +1,9 @@
 package com.ferhatozcelik.ezlocasestudy.data.model
 
+import com.ferhatozcelik.ezlocasestudy.data.entity.DeviceEntity
 import com.google.gson.annotations.SerializedName
+
+const val devicePrefix = "Home Number"
 
 data class Device(
     @SerializedName("PK_Device")
@@ -29,3 +32,22 @@ data class Device(
     var platform: String? = null
 
 )
+
+
+fun Device.toDeviceEntity(count:Int): DeviceEntity {
+    return DeviceEntity(
+        deviceName = "$devicePrefix $count",
+        pkDevice = pkDevice,
+        macAddress = macAddress,
+        pkDeviceType = pkDeviceType,
+        pkDeviceSubType = pkDeviceSubType,
+        serverDevice = serverDevice,
+        serverEvent = serverEvent,
+        pkAccount = pkAccount,
+        firmware = firmware,
+        serverAccount = serverAccount,
+        internalIP = internalIP,
+        platform = platform,
+        lastAliveReported = lastAliveReported
+    )
+}

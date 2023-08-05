@@ -7,4 +7,6 @@ data class DeviceResult(
     @SerializedName("Devices")
     var devices: List<Device> = arrayListOf()
 
+
+
 )

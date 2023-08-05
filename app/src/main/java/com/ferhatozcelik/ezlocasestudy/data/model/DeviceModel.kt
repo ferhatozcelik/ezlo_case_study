@@ -7,3 +7,4 @@ data class DeviceModel(
     var deviceList: List<DeviceEntity> = arrayListOf()
 
 )
+

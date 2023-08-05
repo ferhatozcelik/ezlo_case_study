@@ -17,6 +17,9 @@ import com.ferhatozcelik.ezlocasestudy.data.entity.DeviceEntity
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(search: DeviceEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertList(search: List<DeviceEntity>)
+
     @Update
     suspend fun update(search: DeviceEntity)
 

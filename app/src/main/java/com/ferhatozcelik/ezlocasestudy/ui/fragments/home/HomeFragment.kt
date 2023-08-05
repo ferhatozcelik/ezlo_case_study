@@ -95,18 +95,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun deviceList() {
         Log.d(TAG, "Called Device List")
-        viewModel.deviceList.observe(viewLifecycleOwner) {
-            when (it) {
-                is Resource.Success<*> -> {
+        viewModel.deviceList.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resource.Success<List<DeviceEntity>> -> {
                     progressDialog.cancelDialog(true)
-                    val resultSuccess = it.data as DeviceModel
-                    adapter.setData(resultSuccess.deviceList)
+                    adapter.setData(result.data ?: emptyList())
                     Log.d(TAG, "Device List Success")
                 }
 
                 is Resource.Error -> {
-                    Log.d(TAG, "Device List Error: " + it.errorMessage)
-                    context?.toast(it.errorMessage)
+                    Log.d(TAG, "Device List Error: " + result.message)
+                    context?.toast(result.message.toString())
                     progressDialog.cancelDialog(true)
                 }
 

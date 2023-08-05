@@ -54,8 +54,6 @@ class DevicesAdapter(
 
     }
 
-
-
     override fun getItemCount(): Int {
         return list.size
     }
