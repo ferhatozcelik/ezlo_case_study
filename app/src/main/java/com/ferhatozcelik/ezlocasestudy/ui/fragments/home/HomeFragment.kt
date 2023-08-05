@@ -2,15 +2,20 @@ package com.ferhatozcelik.ezlocasestudy.ui.fragments.home
 
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextMenu
+import android.view.ContextMenu.ContextMenuInfo
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.ferhatozcelik.ezlocasestudy.R
-import com.ferhatozcelik.ezlocasestudy.data.model.Resource
 import com.ferhatozcelik.ezlocasestudy.data.entity.DeviceEntity
 import com.ferhatozcelik.ezlocasestudy.data.model.DeviceModel
+import com.ferhatozcelik.ezlocasestudy.data.model.Resource
 import com.ferhatozcelik.ezlocasestudy.databinding.FragmentHomeBinding
 import com.ferhatozcelik.ezlocasestudy.interfaces.ItemClickListener
+import com.ferhatozcelik.ezlocasestudy.interfaces.ItemLongClickListener
 import com.ferhatozcelik.ezlocasestudy.ui.adapters.DevicesAdapter
 import com.ferhatozcelik.ezlocasestudy.ui.base.BaseFragment
 import com.ferhatozcelik.ezlocasestudy.util.IMAGE_1
@@ -21,6 +26,7 @@ import com.ferhatozcelik.ezlocasestudy.util.show
 import com.ferhatozcelik.ezlocasestudy.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private val TAG = HomeFragment::class.java.simpleName
@@ -30,11 +36,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private lateinit var progressDialog: ProgressDialog
     private lateinit var adapter: DevicesAdapter
 
+    private var tempDeleteItem: DeviceEntity? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Check if there is an internet connection on the device
         if (NetworkUtil.hasInternetConnection(requireContext())) {
-            Log.e(TAG,  "Internet Connected")
+            Log.e(TAG, "Internet Connected")
             // Call the 'getDeviceList()' method in the ViewModel to fetch the list of devices
             viewModel.getDeviceList()
         }
@@ -47,7 +55,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         progressDialog = activity?.let { ProgressDialog(it) }!!
 
         // Create an instance of DevicesAdapter with an empty list and a historyItemClickListener
-        adapter = DevicesAdapter(emptyList(), historyItemClickListener)
+        adapter = DevicesAdapter(emptyList(), deviceItemClickListener, deviceLongItemClickListener)
 
         // Call 'getLocalList()' method on the ViewModel to fetch a local list of devices
         viewModel.getLocalList()
@@ -110,12 +118,43 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
     }
 
-    private val historyItemClickListener = object : ItemClickListener {
+    private val deviceItemClickListener = object : ItemClickListener {
         override fun onClick(objects: Any?) {
             val item = objects as DeviceEntity
             val bundle = Bundle()
             bundle.putParcelable("item", item)
             activity?.findNavController(R.id.nav_host_fragment)?.navigate(R.id.action_homeFragment_to_myDeviceFragment, bundle)
         }
+    }
+
+    private val deviceLongItemClickListener = object : ItemLongClickListener {
+        override fun onClick(objects: Any?, view: View?) {
+            val item = objects as DeviceEntity
+            tempDeleteItem = item
+            if (view != null) {
+                registerForContextMenu(view)
+            }
+        }
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menu.add(0, v.id, 0, "Delete")
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        if (item.title === "Delete") {
+            val alertDialog: AlertDialog.Builder = context?.let { AlertDialog.Builder(it) }!!
+            alertDialog.setTitle("Delete")
+            alertDialog.setPositiveButton("Delete") { _, i -> //Delete
+                tempDeleteItem?.id?.let { viewModel.deleteByDevice(it) }
+            }
+            alertDialog.setNeutralButton("Cancel") { _, i ->
+
+            }
+            val alertBuilder = alertDialog.create()
+            alertBuilder.show()
+        }
+        return true
     }
 }

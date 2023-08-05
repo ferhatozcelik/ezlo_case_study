@@ -7,9 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ferhatozcelik.ezlocasestudy.data.entity.DeviceEntity
 import com.ferhatozcelik.ezlocasestudy.databinding.DeviceItemBinding
 import com.ferhatozcelik.ezlocasestudy.interfaces.ItemClickListener
+import com.ferhatozcelik.ezlocasestudy.interfaces.ItemLongClickListener
 import com.ferhatozcelik.ezlocasestudy.util.generatorImage
 
-class DevicesAdapter(var list: List<DeviceEntity>, var itemClickListener: ItemClickListener) : RecyclerView.Adapter<DevicesAdapter.HistoryViewHolder>() {
+class DevicesAdapter(
+    var list: List<DeviceEntity>,
+    var itemClickListener: ItemClickListener,
+    var itemLongClickListener: ItemLongClickListener
+) : RecyclerView.Adapter<DevicesAdapter.HistoryViewHolder>() {
     private val TAG = DevicesAdapter::class.java.simpleName
     lateinit var itemGoalsPreviewBinding: DeviceItemBinding
 
@@ -42,7 +47,13 @@ class DevicesAdapter(var list: List<DeviceEntity>, var itemClickListener: ItemCl
             itemClickListener.onClick(item)
         }
 
+        holder.itemView.setOnLongClickListener {
+            itemLongClickListener.onClick(item, holder.itemView.rootView)
+            return@setOnLongClickListener false
+        }
+
     }
+
 
 
     override fun getItemCount(): Int {

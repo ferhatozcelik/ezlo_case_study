@@ -36,6 +36,11 @@ class HomeViewModel @Inject constructor(
         getLocalDeviceList()
     }
 
+    fun deleteByDevice(id: Int) = viewModelScope.launch {
+        devicesRepository.deleteByDevice(id)
+        getLocalDeviceList()
+    }
+
     private suspend fun getLocalDeviceList() {
         try {
             val resultLocal = devicesRepository.getLocalDeviceList()

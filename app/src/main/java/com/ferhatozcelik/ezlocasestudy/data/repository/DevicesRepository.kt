@@ -79,4 +79,8 @@ class DevicesRepository @Inject constructor(private val appApi: AppApi, private 
     suspend fun updateDevice(name: String, id: Int) {
         devicesDao.updateDevice(name, id)
     }
+
+    suspend fun deleteByDevice(id: Int) {
+        devicesDao.deleteByDevice(id)
+    }
 }

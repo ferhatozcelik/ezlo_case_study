@@ -11,6 +11,9 @@ import com.ferhatozcelik.ezlocasestudy.data.entity.DeviceEntity
     @Query("UPDATE device_table SET deviceName = :name WHERE id = :id")
     suspend fun updateDevice(name: String, id: Int)
 
+    @Query("DELETE FROM device_table WHERE id = :id")
+    suspend fun deleteByDevice(id: Int)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(search: DeviceEntity)
 
